@@ -63,14 +63,12 @@ function updateFilters() {
   
     // 9. Loop through all of the filters and keep any data that
     // matches the filter values
-
-    filteredData.forEach((UFO_filters) => {
-      let row = tbody.append("tr");
-      Object.values(UFO_filters).forEach((val) => {
-          let cell = row.append("td");
-          cell.text(val);
+    
+      Object.entries(UFO_filters).forEach(([key, val]) => {
+        filteredData= filteredData.filter(things => things[key] == val);
+ 
       });
-    })
+    
     // 10. Finally, rebuild the table using the filtered data
     buildTable(filteredData);
   }
